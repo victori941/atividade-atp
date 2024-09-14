@@ -30,7 +30,9 @@ jobs:
           echo "No tests implemented yet"
 
   deploy:
+    name: deploy to heroku
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout code
@@ -39,4 +41,3 @@ jobs:
       - name: Deploy to Heroku
         run: |
           echo "Aqui vai o comando de deploy para a sua plataforma"
-  
