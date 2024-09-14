@@ -1,0 +1,42 @@
+name: CI/CD Pipeline for To-Do List
+
+on:
+  push:
+    branches:
+      - main
+      - criação-ci
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install Flask
+          pip install pytest  # Caso queira rodar testes
+
+      - name: Run tests
+        run: |
+          # Adicione testes aqui
+          echo "No tests implemented yet"
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Heroku
+        run: |
+          echo "Aqui vai o comando de deploy para a sua plataforma"
+  
