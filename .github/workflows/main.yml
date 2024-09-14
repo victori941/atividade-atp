@@ -23,10 +23,10 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Build Docker image
-        run: docker build -t username/todo-list-app .
+        run: docker build -t ${{ secrets.DOCKERHUB_VICTORIA634 }}/todo-list-app .
 
       - name: Login to DockerHub
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_Magicshop$7 }}" | docker login -u "${{ secrets.DOCKERHUB_VICTORIA634 }}" --password-stdin
 
       - name: Push Docker image to DockerHub
-        run: docker push username/todo-list-app
+        run: docker push ${{ secrets.DOCKERHUB_VICTORIA634 }}/todo-list-app
