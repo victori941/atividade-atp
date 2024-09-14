@@ -13,6 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to Heroku 
+      - name: Deploy to Heroku
         run: |
           echo "Aqui vai o comando de deploy para a sua plataforma"
