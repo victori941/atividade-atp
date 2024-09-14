@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+      - criação-ci
 
 jobs:
   build:
-    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -24,25 +21,22 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install Flask
+          pip install pytest  # Caso queira rodar testes
 
       - name: Run tests
         run: |
-          # Aqui você pode adicionar seus testes de integração para a aplicação To-Do
+          # Adicione testes aqui
           echo "No tests implemented yet"
 
   deploy:
-    name: Deploy to Heroku
     runs-on: ubuntu-latest
-    needs: build
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          heroku git:remote -a tolist
-          git push heroku main
+          echo "Aqui vai o comando de deploy para a sua plataforma"
+  
