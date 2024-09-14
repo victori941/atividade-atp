@@ -27,6 +27,19 @@ def delete_task(task_id):
         conn.execute('DELETE FROM tasks WHERE id = ?', (task_id,))
     return redirect('/')
 
+@app.route('/edit/<int:task_id>', methods=['GET', 'POST'])
+def edit_task(task_id):
+    if request.method == 'POST':
+        new_task = request.form['task']
+        with sqlite3.connect('todo.db') as conn:
+            conn.execute('UPDATE tasks SET task = ? WHERE id = ?', (new_task, task_id))
+        return redirect('/')
+    else:
+        with sqlite3.connect('todo.db') as conn:
+            cursor = conn.execute('SELECT * FROM tasks WHERE id = ?', (task_id,))
+            task = cursor.fetchall()
+        return render_template('edit.html', task=task[0], task_id=task_id)
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=True)
