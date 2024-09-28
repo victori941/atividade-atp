@@ -16,10 +16,15 @@ def index():
 
 @app.route('/add', methods=['POST'])
 def add_task():
-    task = request.form['task']
-    with sqlite3.connect('todo.db') as conn:
-        conn.execute('INSERT INTO tasks (task) VALUES (?)', (task,))
+    task = request.form['task'].strip()  # Remove espaços em branco
+    if task:  # Verifica se a tarefa não está vazia
+        with sqlite3.connect('todo.db') as conn:
+            conn.execute('INSERT INTO tasks (task) VALUES (?)', (task,))
+    else:
+        # Aqui você pode redirecionar com um erro ou mensagem
+        return redirect('/?error=Task cannot be empty')
     return redirect('/')
+
 
 @app.route('/delete/<int:id>')
 def delete_task(task_id):

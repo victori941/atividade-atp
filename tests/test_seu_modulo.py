@@ -2,6 +2,7 @@ import unittest
 import sqlite3
 from main import app
 
+
 class TestApp(unittest.TestCase):
 
     @classmethod
