@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Altere para o arquivo de requisitos do seu projeto, se necessário
+          pip install -r requirements.txt  
 
       - name: Run tests
         run: |
-          python -m unittest discover -s tests  # Ajuste o caminho para os seus testes, se necessário
+          python -m unittest discover -s tests 
