@@ -1,0 +1,17 @@
+name: Alertas de Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Enviar alerta para Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"content":"Novo commit no branch main!"}' $DISCORD_WEBHOOK
